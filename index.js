@@ -15,7 +15,7 @@ const validateSignInInput = require('./input_vaildation/signIn');
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
-
+app.use(cors());
 const mongoose = require('mongoose');
 const URI = require('./config/index');
 
