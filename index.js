@@ -51,7 +51,7 @@ const dbName = 'Chat';
 
 // const app = require('./router');
 
-// app.use(cors());
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 // app.use(router);
@@ -260,7 +260,7 @@ app.get('/messages/:room/:signIn', async (req, res) => {
 })
 
 // add new user
-app.post('/signUp', cors(), async (req, res) => {
+app.post('/signUp', async (req, res) => {
 
     const { errors, isValid } = validateSignUpInput(req.body);
 
