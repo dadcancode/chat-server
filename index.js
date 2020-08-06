@@ -51,7 +51,7 @@ const dbName = 'Chat';
 
 // const app = require('./router');
 
-// app.use(cors());
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 // app.use(router);
