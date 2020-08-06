@@ -51,7 +51,7 @@ const dbName = 'Chat';
 
 // const app = require('./router');
 
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 // app.use(router);
@@ -167,18 +167,6 @@ io.on('connection', (socket) => {
 
 });
 
-// io.on('getRooms', (socket) => {
-//     let openRooms = [];
-//         let rooms = io.sockets.adapter.rooms;
-//         if (rooms) {
-//             for (let room in rooms) {
-//                 if (!rooms[room].hasOwnProperty(room)) {
-//                     openRooms.push(room)
-//                 }
-//             }
-//         }
-//         socket.emit('theRooms', openRooms);
-// })
 
 app.get('/', (req, res) => {
     res.send('Server is up and running');
@@ -272,7 +260,7 @@ app.get('/messages/:room/:signIn', async (req, res) => {
 })
 
 // add new user
-app.post('/signUp', async (req, res) => {
+app.post('/signUp', corse(), async (req, res) => {
 
     const { errors, isValid } = validateSignUpInput(req.body);
 
