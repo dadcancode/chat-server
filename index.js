@@ -260,7 +260,7 @@ app.get('/messages/:room/:signIn', async (req, res) => {
 })
 
 // add new user
-app.post('/signUp', corse(), async (req, res) => {
+app.post('/signUp', cors(), async (req, res) => {
 
     const { errors, isValid } = validateSignUpInput(req.body);
 
