@@ -168,7 +168,7 @@ io.on('connection', (socket) => {
 });
 
 app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "https://friendly-williams-a3971a.netlify.app/");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next()
 });
@@ -303,8 +303,6 @@ app.post('/signUp', async (req, res) => {
                         if (err) throw err;
                         userDocument.password = hash;
                         const p = await col.insertOne(userDocument);
-                        res.header("Access-Control-Allow-Origin", "*");
-                        res.header("Access-Control-Allow-Headers", "X-Requested-With");
                         res.json({user: p.ops[0], room: 'Global'});
                         })
                     })        
