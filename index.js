@@ -51,15 +51,16 @@ const dbName = 'Chat';
 
 // const app = require('./router');
 
-app.use(cors());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
 // app.use(router);
 
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log("MongoDB connection made!", mongoURI)
 });
+
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 mongoose.connection.on('error', err => console.log(err.message));
 mongoose.connection.on('disconnected', () => console.log('mongo disconnected'));
