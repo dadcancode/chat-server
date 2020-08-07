@@ -167,11 +167,11 @@ io.on('connection', (socket) => {
 
 });
 
-app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://friendly-williams-a3971a.netlify.app/");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next()
-});
+// app.all('/', function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "https://friendly-williams-a3971a.netlify.app/");
+//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//     next()
+// });
 
 
 app.get('/', (req, res) => {
