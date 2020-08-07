@@ -241,9 +241,12 @@ app.get('/users', async (req, res) => {
 
         const users = col.find({});
         res.send(await users.toArray())
+    } catch (err) {
+        console.log('*********************************')
+        console.log(err.stack)
     }
     finally {
-        
+
     }
 })
 
