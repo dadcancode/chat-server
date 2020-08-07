@@ -268,8 +268,7 @@ app.get('/messages/:room/:signIn', async (req, res) => {
 // add new user
 app.post('/signUp', async (req, res) => {
 
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    
 
     const { errors, isValid } = validateSignUpInput(req.body);
 
@@ -304,6 +303,8 @@ app.post('/signUp', async (req, res) => {
                         if (err) throw err;
                         userDocument.password = hash;
                         const p = await col.insertOne(userDocument);
+                        res.header("Access-Control-Allow-Origin", "*");
+                        res.header("Access-Control-Allow-Headers", "X-Requested-With");
                         res.json({user: p.ops[0], room: 'Global'});
                         })
                     })        
