@@ -233,10 +233,18 @@ app.post('/signIn', async (req, res) => {
 
 });
 
-app.get('/users', (req, res) => {
-    Users.find({}, (err, data) => {
-        res.json(data)
-    })
+app.get('/users', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db(dbName);
+        const col = db.collection('Users');
+
+        const users = col.find({});
+        res.send(await users.toArray())
+    }
+    finally {
+        
+    }
 })
 
 app.get('/messages/:room/:signIn', async (req, res) => {
@@ -356,6 +364,8 @@ app.post('/messages', async (req, res) => {
         // await client.close();
     }
 })
+
+
 
 app.get('/getRooms', (req, res) => {
     console.log(io.sockets.adapter.rooms)
