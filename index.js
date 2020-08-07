@@ -268,6 +268,9 @@ app.get('/messages/:room/:signIn', async (req, res) => {
 // add new user
 app.post('/signUp', async (req, res) => {
 
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+
     const { errors, isValid } = validateSignUpInput(req.body);
 
     if (!isValid) {
