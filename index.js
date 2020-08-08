@@ -358,6 +358,7 @@ app.post('/messages', async (req, res) => {
 
 
 app.put('/users/:id', async (req, res) => {
+    console.log(req.body)
     try {
         await client.connect();
         console.log('client connected successfully');
@@ -365,14 +366,17 @@ app.put('/users/:id', async (req, res) => {
 
         const col = db.collection("Users");
 
-        const p = await col.updateOne({_id: req.params.id}, {$set: {username: req.body.username}});
+        const p = await col.updateOne({ _id: req.params.id }, {$set: {username: req.body.username}});
         console.log('++++++++++++++++++++');
-        console.log(p)
+        console.log(Object.keys(p))
     }
     finally {
 
     }
 })
+
+
+
 
 
 app.get('/getRooms', (req, res) => {
