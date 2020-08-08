@@ -365,12 +365,12 @@ app.put('/users/:id', async (req, res) => {
 
         const col = db.collection("Users");
 
-        const p = await col.updateOne({_id: req.params.id}, {username: req.body.username});
+        const p = await col.updateOne({_id: req.params.id}, {$set: {username: req.body.username}});
         console.log('++++++++++++++++++++');
         console.log(p)
     }
     finally {
-        
+
     }
 })
 
