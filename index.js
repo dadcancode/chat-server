@@ -328,18 +328,6 @@ app.post('/signUp', async (req, res) => {
 
 // add message
 app.post('/messages', async (req, res) => {
-    // Messages.create({
-    //     senderId: req.body.senderId,
-    //     senderName: req.body.senderName,
-    //     text: req.body.text,
-    //     room: req.body.room
-    // }, (err, data) => {
-    //     res.json(data)
-    // })
-    // const message = new Messages(req.body);
-    // console.log(message);
-    // res.json(message);
-
     try {
         await client.connect();
         console.log('client connected successfully');
@@ -368,6 +356,23 @@ app.post('/messages', async (req, res) => {
     }
 })
 
+
+app.put('/users/:id', async (req, res) => {
+    try {
+        await client.connect();
+        console.log('client connected successfully');
+        const db = client.db(dbName);
+
+        const col = db.collection("Users");
+
+        const p = await col.updateOne({_id: req.params.id}, {username: req.body.username});
+        console.log('++++++++++++++++++++');
+        console.log(p)
+    }
+    finally {
+        
+    }
+})
 
 
 app.get('/getRooms', (req, res) => {
